@@ -43,7 +43,8 @@ Populism_Europe <- Populism %>%
                         "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", 
                         "Latvia", "Lithuania", "Moldova", "Netherlands", "Poland", "Portugal", "Romania", "Serbia", 
                         "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom"), 
-         year >= 1980)
+         year >= 1980, 
+         preselection == 0)
 
 
 
@@ -55,7 +56,7 @@ install.packages("writexl")
 library(writexl)
 write_xlsx(Populism, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populismus.xlsx")
 
-write_xlsx(Populism_Europe, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populism_Europe.xlsx")
+write_xlsx(Populism_Europe, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populism_Europe_1.xlsx")
 
 
 
