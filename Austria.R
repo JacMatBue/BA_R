@@ -128,15 +128,18 @@ summary(regression_model1)
 ## Welche Fälle waren in der Regierung und sind populistisch
 
 populistisch_regierung <- AUT_1998_X1 %>%
-  subset(government == 1 & populist == 1) %>%
-  print()
+  subset(government == 1 & populist == 1)
 
 
 
 
+## Datenset als Excel speichern
+
+write.xlsx(AUT_1998_X1, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/BA_R/Country_xlsx/Austria.xlsx", row.Names = FALSE)
 
 
-
+## Datensets zusammenfügen:
+## integrated_data <- rbind(Austria, Bulgaria)
 
 
 
