@@ -14,6 +14,10 @@ summary(Populism_Data)
 Populism_Power <- Populism_Data %>%
   filter(coalition == 1)
 
+Populism_Cleaned <- Populism_Data %>%
+  filter(preselection == 1, enteredgov == 1, year >= 1980)
+  
+
 
 ## Load Polity5
 
@@ -57,6 +61,7 @@ library(writexl)
 write_xlsx(Populism, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populismus.xlsx")
 
 write_xlsx(Populism_Europe, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populism_Europe_1.xlsx")
+write_xlsx(Populism_Cleaned, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Populism_cleaned.xlsx")
 
 
 
