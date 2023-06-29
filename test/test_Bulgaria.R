@@ -1,6 +1,8 @@
 library(tidyverse)
 library(readxl)
 library(lubridate)
+library(openxlsx)
+
 
 
 
@@ -115,6 +117,12 @@ regression_model1 <- lm(Wahlkosten ~ government, data = BGR_1998_X1)
 summary(regression_model1)
 
 ## Datenset muss nochmal überprüft und nachgebessert werden: 2017/18 war z.B. OP in Regierung
+
+
+## Datenset als Excel speichern
+
+write.xlsx(BGR_1998_X1, "/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/BA_R/Country_xlsx/Bulgaria.xlsx", row.Names = FALSE)
+
   
   
   

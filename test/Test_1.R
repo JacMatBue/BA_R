@@ -3,6 +3,12 @@ library(readxl)
 
 
 Populism_Data <- read_excel("/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/xlsx_votes_for_populists_data.xlsx", skip = 1)
+DPI_Data <- read_excel("/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/DPI2020/DPI2020.xlsx")
+
+DPI_Data <- DPI_Data %>%
+  mutate(year = substr(year, 1, 4)) %>%
+  rename(country = "countryname")
+
 
 ## inspect Populism_Data
 
@@ -24,19 +30,27 @@ Populism_Cleaned <- Populism_Data %>%
 Polity5 <- read_excel("/Users/jacmatbue/Library/Mobile Documents/com~apple~CloudDocs/Uni/BA-Arbeit/Daten/Datensets/Polity5.xls", col_names = TRUE)
 
 Polity5_1960 <- Polity5 %>%
-  filter(year >= 1960)
+  filter(year >= 1989) 
 
 
 
-## Polity5 und Populismus_Data mergen
+## Polity5 und Populismus_Data / DPI mergen
 
 merged_data <- merge(Populism_Data, Polity5[, c("country", "year", "polity", "polity2")], by = c("country", "year"), all.x = TRUE)
+
+merged_data_1 <- merge(DPI_Data, Polity5[, c("country", "year", "polity", "polity2")], by = c("country", "year"), all.x = TRUE)
+
 
 ## Filtern nach: Demokratie (>6=)
 
 
 Populism <- merged_data %>%
   filter(polity2 >= 6)
+
+
+DPI_democracy <- merged_data_1 %>%
+  filter(polity2 >= 6)
+  
 
 
 ## Populism_Europe: nach europäischen Ländern gefiltert und danach nach Power (coalition)
