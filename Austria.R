@@ -24,7 +24,7 @@ cabinet_AUT <- ParlGov_cabinet %>%
 ## merge election_AUT and cabinet_AUT 
 
 merged_AUT <- election_AUT %>%
-left_join(cabinet_AUT[, c("election_id", "cabinet_party", "party_name", "cabinet_id")], 
+left_join(cabinet_AUT[, c("election_id", "cabinet_party", "party_name", "cabinet_id", "prime_minister")], 
           by = c("election_id", "party_name"))
 
 
@@ -34,6 +34,7 @@ left_join(cabinet_AUT[, c("election_id", "cabinet_party", "party_name", "cabinet
 AUT_1 <- merged_AUT %>%
   group_by(election_id, party_id) %>%
   mutate(cabinet_party = as.integer(any(cabinet_party == 1)),
+         prime_minister = as.integer(any(prime_minister == 1)),
          cabinet_id = paste(cabinet_id[cabinet_party == 1], collapse = ",")) %>%
   ungroup()
 
