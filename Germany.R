@@ -48,7 +48,7 @@ cabinet_GER <- ParlGov_cabinet %>%
   filter(country_name == "Germany", as.numeric(substr(election_date, 1, 4)) >= 1998)
 
 
-## merge election_AUT and cabinet_AUT -> Problem: sorge dafür dass CDU/CSU in cabinet nicht getrennt sind?
+## merge election_AUT and cabinet_AUT 
 
 merged_GER <- election_GER1 %>%
   left_join(cabinet_GER[, c("election_id", "cabinet_party", "party_name", "cabinet_id", "prime_minister")], 
@@ -90,3 +90,5 @@ selected_variables <- populist %>%
 
 GER_pop <- left_join(GER_3, selected_variables, by=c("party_id"="parlgov_id")) %>%
   mutate(populist = ifelse(is.na(populist), 0, populist))
+
+
